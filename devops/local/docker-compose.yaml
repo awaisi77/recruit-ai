@@ -1,0 +1,15 @@
+version: "3"
+services:
+  stripe_payment_service:
+    build: .
+    platform: "linux/amd64"
+    ports:
+      - ${ALLIANZ_EX_PORT:-4008}:4008
+    volumes:
+      - ../../:/home/app
+    env_file:
+    - web-local.env
+networks: 
+  default: 
+    external: 
+      name: cover-ai-network
