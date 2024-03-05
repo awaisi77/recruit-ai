@@ -29,7 +29,7 @@ pool = config.getJsonFromEnv("db_pool");
 const writer = getParamsFromDBUrl(process.env.DB_CONNECTION_URL);
 read_replicas = getParamsFromDBUrl(process.env.DB_CONNECTION_READ_URL);
 const db_config = {
-        "db_connection_url":process.env.DB_CONNECTION_URL,
+        "db_connection_url": process.env.DB_CONNECTION_URL,
         "writer":writer,
         "read_replicas":read_replicas,
         "dialect": "postgres",
@@ -41,11 +41,8 @@ const db_config = {
 const getSequelizeConfig = ()=>{
       let config =   {
                 dialect: db_config.dialect,
-                port: db_config.writer[0].port,
-                replication: {
-                  read:db_config.read_replicas,
-                  write: db_config.writer[0]
-                },
+                port: 5433,
+
                 pool: db_config.pool,
                 logging: (msg)=>{
                         if(process.env.NODE_ENV !== 'production' ){

@@ -10,4 +10,5 @@ db.Sequelize = Sequelize;
 db.sequelize = sequelize;
 db.models = getModels(db);
 console.log(db.models);
-module.exports = db;
+
+module.exports = {db};
