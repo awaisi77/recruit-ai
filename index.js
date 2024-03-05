@@ -1,4 +1,4 @@
-//require("dotenv").config();
+require("dotenv").config();
 const { ApolloServer, gql } = require("apollo-server-express");
 const { applyMiddleware } = require("graphql-middleware");
 const { buildSubgraphSchema } = require("@apollo/federation");
@@ -11,6 +11,7 @@ const Datasources = require("./datasources");
 const { permissions } = require("./permissions");
 const allianz_routes = require("./routes/api/allianz");
 const { responseHandler, errorHandler } = require("./helpers/response_handler");
+
 const port = process.env.port || 4008;
 
 //Body Parser Middleware - Should be defined before defining routes
