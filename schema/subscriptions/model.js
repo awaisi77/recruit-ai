@@ -1,21 +1,23 @@
-module.exports = {
-  up: async (queryInterface, Sequelize) => {
-    await queryInterface.createTable("SubscriptionPlan", {
+
+module.exports = (Sequelize, DataTypes) => {
+    const Subscription = Sequelize.define("Subscription", {
       id: {
         primaryKey: true,
         type: Sequelize.UUID,
         defaultValue: Sequelize.UUIDV4,
       },
-      title: {
-        type: Sequelize.STRING,
+      user_id:{
+        type: Sequelize.UUID,
+        foreignKey:true
       },
-      connects: {
+      plan_id:{
+          type: Sequelize.UUID,
+          foreignKey:true
+        },
+      remianigConnects: {
         type: Sequelize.INTEGER,
       },
-      price: {
-        type: Sequelize.INTEGER,
-      },
-      type: {
+      status: {
         type: Sequelize.STRING,
       },
       createdAt: {
@@ -27,5 +29,7 @@ module.exports = {
         type: Sequelize.DATE,
       },
     });
-  },
-};
+  
+    return Subscription;
+  };
+  
