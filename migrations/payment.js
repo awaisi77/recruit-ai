@@ -34,8 +34,5 @@ module.exports = {
             defaultValue: Sequelize.literal('CURRENT_TIMESTAMP'),
         }
     });
-  },
-  down: async (queryInterface, Sequelize) => {
-    await queryInterface.dropTable('Payment');
-  },
+  }
 };

@@ -16,11 +16,11 @@ module.exports = {
           type: Sequelize.UUID,
           foreignKey:true
         },
-        role_createdAt: {
+        createdAt: {
           allowNull: false,
           type: Sequelize.DATE,
         },
-        role_updatedAt: {
+        updatedAt: {
           allowNull: false,
           type: Sequelize.DATE,
         },
