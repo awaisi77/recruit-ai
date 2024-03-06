@@ -3,26 +3,26 @@ module.exports = (Sequelize, DataTypes) => {
     const CoverLetter = Sequelize.define("CoverLetter", {
         id: {
             primaryKey: true,
-            type: Sequelize.UUID,
-            defaultValue: Sequelize.UUIDV4,
+            type: DataTypes.UUID,
+            defaultValue: DataTypes.UUIDV4,
           },
           user_id:{
-            type: Sequelize.UUID,
+            type: DataTypes.UUID,
             foreignKey:true
           },
           job_title: {
-            type: Sequelize.STRING,
+            type: DataTypes.STRING,
           },
           content: {
-            type: Sequelize.STRING,
+            type: DataTypes.STRING,
           },
           createdAt: {
             allowNull: false,
-            type: Sequelize.DATE,
+            type: DataTypes.DATE,
           },
           updatedAt: {
             allowNull: false,
-            type: Sequelize.DATE,
+            type: DataTypes.DATE,
           },
     });
   

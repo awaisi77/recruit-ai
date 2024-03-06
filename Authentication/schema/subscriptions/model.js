@@ -3,30 +3,30 @@ module.exports = (Sequelize, DataTypes) => {
     const Subscription = Sequelize.define("Subscription", {
       id: {
         primaryKey: true,
-        type: Sequelize.UUID,
-        defaultValue: Sequelize.UUIDV4,
+        type: DataTypes.UUID,
+        defaultValue: DataTypes.UUIDV4,
       },
       user_id:{
-        type: Sequelize.UUID,
+        type: DataTypes.UUID,
         foreignKey:true
       },
       plan_id:{
-          type: Sequelize.UUID,
+          type: DataTypes.UUID,
           foreignKey:true
         },
       remianigConnects: {
-        type: Sequelize.INTEGER,
+        type: DataTypes.INTEGER,
       },
       status: {
-        type: Sequelize.STRING,
+        type: DataTypes.STRING,
       },
       createdAt: {
         allowNull: false,
-        type: Sequelize.DATE,
+        type: DataTypes.DATE,
       },
       updatedAt: {
         allowNull: false,
-        type: Sequelize.DATE,
+        type: DataTypes.DATE,
       },
     });
   
