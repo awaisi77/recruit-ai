@@ -1,4 +1,4 @@
-const { SubscriptionPlan } = require(".//SubscriptionPlan");
+const { SubscriptionPlan } = require("./SubscriptionPlan");
 const model = require("./model");
 module.exports = {
   SubscriptionPlan,
