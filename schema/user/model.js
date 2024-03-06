@@ -1,12 +1,4 @@
-/**
- * Verifystatus:
- * 0 = not
- * 1 = email verified
- * 2 = phone verified
- * 3 = id/kyc completed (will expand later)
- * 4 = customer verified successfully
- * 5 = unverified super saver customer
- */
+
 module.exports = (sequelize, DataTypes) => {
   const User = sequelize.define("User", {
     id: {
