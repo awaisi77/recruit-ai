@@ -7,6 +7,7 @@ const {
   send_slack_notification,
 } = require("../../helpers/slack_notifications");
 const config = require("../../config/index");
+
 class AllianzHelper {
   constructor(db) {
     this.db = db;

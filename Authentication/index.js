@@ -14,7 +14,7 @@ const { responseHandler, errorHandler } = require("./helpers/response_handler");
 const port = process.env.port || 4008;
 
 const allianz_routes = require("./routes/api/allianz");
-const payment_routes = require("./routes/api/payment");
+const authRoute_routes = require("./routes/api/authRoute");
 
 
 
@@ -51,7 +51,7 @@ setupCors(app);
 
 // app.use("/api/v1", airwallex_webhook_routes);
 app.use("/api/v1", allianz_routes);
-app.use("/api/v1", payment_routes);
+app.use("/api/v1", authRoute_routes);
 
 app.use(responseHandler);
 app.use(errorHandler);
