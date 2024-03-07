@@ -11,9 +11,10 @@ class UserService {
          // Hash the password
         //  const hashedPassword = await bcrypt.hash(payload.password, 10);
 
-         const userData = new UserDL(db);
+      const userData = new UserDL(db);
        const data =  await userData.signupDL(payload)
-         return data;
+
+         return {data:data};
         } catch (ex) {
           console.log("eroro", ex)
         }

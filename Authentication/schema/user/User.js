@@ -1,3 +1,4 @@
+const { use } = require("../../routes/api/authRoute");
 
 class UserDL {
   constructor(db){
@@ -6,12 +7,13 @@ class UserDL {
   async signupDL(userdata) {
     try {
       console.log("model data ", this.db.models)
-      await this.db.models.User.create({
+      const user = await this.db.models.User.create({
         name:userdata.name,
         email:userdata.email,
         password:userdata.password
       });
-      return userdata  
+      console.log("User => ", user)
+      return user  
     } catch (error) {
       console.log(error)
     }
