@@ -1,51 +1,35 @@
 
 module.exports = (sequelize, DataTypes) => {
   const User = sequelize.define("User", {
-    id: {
-      primaryKey: true,
-      type: DataTypes.UUID,
-      defaultValue: DataTypes.UUIDV4,
-    },
-    name:{
+    
+    
+    fullName: {
       type: DataTypes.STRING,
-      allowNull:false
+      allowNull: true,
     },
     email: {
       type: DataTypes.STRING,
-      allowNull: false,
-      unique: true,
-      validate: {
-        isEmail: true
-      }
+      allowNull: true,
     },
-    password:{
-      type: DataTypes.TEXT,
-      allowNull:false
+    password: {
+      type: DataTypes.STRING,
+      allowNull: true,
     },
-    isVerified: {
-      type: DataTypes.BOOLEAN,
-      allowNull: false,
-      defaultValue: true 
+    googleId: {
+      type: DataTypes.STRING,
+      allowNull: true,
     },
-    password: DataTypes.STRING,
-    createdAt: {
-      allowNull: false,
-      type: DataTypes.DATE, 
-      defaultValue: DataTypes.NOW // Set default value to current timestamp
+    picture: {
+      type: DataTypes.STRING,
+      allowNull: true,
     },
-    updatedAt: {
-      allowNull: false,
-      type: DataTypes.DATE,
-      defaultValue: DataTypes.NOW // Set default value to current timestamp
-    }
-    // accessToken: DataTypes.STRING,
-    // verifyStatus: DataTypes.INTEGER,
-    // status: DataTypes.INTEGER  
+ 
   },
-  {
-    tableName: "User",
-  }
+
+ {  timestamps: false}
   );
+
+  sequelize.sync()
   
   return User;
 };

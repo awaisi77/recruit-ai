@@ -1,6 +1,5 @@
 const express = require("express");
-const UserService = require("../../services/user");
-const { tryCatch } = require("bullmq");
+const UserService = require("../../services/UserService");
 const router = express.Router();
 
 
@@ -13,7 +12,7 @@ router.get("/test", async function (req, res, next) {
 router.post("/signup", async function (req, res, next) {
 
     try {
-        const payload= req.body;
+        const payload = req.body;
         console.log(req.body)
         const user = new UserService()
         const response = await user.signupService(payload);
@@ -22,6 +21,17 @@ router.post("/signup", async function (req, res, next) {
     } catch (error) {
         console.log(error)
     }
-
 })
+
+
+
+//auth logout
+router.get("/logout", function (req, res) {
+    //handle with passport
+    res.send("loggin out");
+})
+
+
+
+
 module.exports = router; 
