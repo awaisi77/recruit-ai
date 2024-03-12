@@ -2,13 +2,10 @@ require("dotenv").config();
 const { ApolloServer, gql } = require("apollo-server-express");
 const { applyMiddleware } = require("graphql-middleware");
 const { buildSubgraphSchema } = require("@apollo/federation");
-const passportSetup = require('./services/auth/passportGoogleSSO')
 const express = require("express");
 
 
 const app = express();
-
-
 
 const bodyParser = require("body-parser");
 const { typeDefs, resolvers } = require("./schema");
@@ -20,13 +17,16 @@ const { responseHandler, errorHandler } = require("./helpers/response_handler");
 const port = process.env.port || 4008;
 
 const allianz_routes = require("./routes/api/allianz");
-const authRoute_routes = require("./routes/api/authRoute");
-const loginWithGoogleApi = require("./routes/api/loginWithGoogleApi");
+
 const passport = require("passport");
 const cookieSession = require("cookie-session");
+const session = require('express-session');
+
 
 const api = require("./routes/api/index");
+
 require('./services/auth/passport')
+require('./services/auth/passportGoogleSSO')
 
 //Body Parser Middleware - Should be defined before defining routes
 app.use(
@@ -59,14 +59,21 @@ const server = new ApolloServer({
 });
 setupCors(app);
 
-app.use(
-  cookieSession({
-    maxAge: 24 * 60 * 60 * 1000,
-    keys: [process.env.COOKIE_KEY],
-  })
-);
-app.use(passport.initialize())
-app.use(passport.session())
+// app.use(
+//   cookieSession({
+//     maxAge: 24 * 60 * 60 * 1000,
+//     keys: [process.env.COOKIE_KEY],
+//   })
+// );
+app.use(session({
+  secret: [process.env.COOKIE_KEY], // Set your own secret
+  resave: false,
+  saveUninitialized: true
+}));
+
+
+app.use(passport.initialize());
+app.use(passport.session());
 
 // app.use("/api/v1", airwallex_webhook_routes);
 

@@ -10,14 +10,12 @@ const callbackURL = 'http://localhost:4008/api/v1/auth/google/redirect'
 
 passport.use(new GoogleStrategy({
     //option for the egoogle strategy
-    callbackURL:callbackURL ,
     clientID: keys.google.clientID,
     clientSecret: keys.google.clientSecret,
+    callbackURL:callbackURL , //redirect when you finish signin on google auth20
     passReqToCallback: true
   }, async (req, accessToken, refreshToken, profile, cb) => {
-  
-    // try {
-  
+    
     const defaultUser = {
         fullName: `${profile.name.givenName} ${profile.name.familyName}`,
         email: profile.emails[0].value,
