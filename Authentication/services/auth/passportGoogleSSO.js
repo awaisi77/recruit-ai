@@ -31,7 +31,6 @@ passport.use(new GoogleStrategy({
       cb(err, null);
     });
   
-  
     if (user && user[0]) return cb(null, user && user[0]);
   
   }
