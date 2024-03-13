@@ -13,6 +13,67 @@ class UserDL {
     );
   }
 
+  async storeResetToken(email, token) {
+    try {
+      const user = await this.db.models.User.findOne({ where: { email } });
+      if (!user) {
+        console.log("User not found");
+        return;
+      }
+      // Store the reset token for the user
+      await user.update({ resetToken: token });
+    } catch (error) {
+      console.error("Error storing reset token:", error);
+    }
+  }
+
+  async verifyResetToken(token) {
+    try {
+      console.log("token 2", token)
+        const user = await this.db.models.User.findOne({ where: { resetToken: token } });
+        if (!user) {
+            console.log("Invalid token ");
+            return null;
+        }
+        return user;
+    } catch (error) {
+        console.error("Error verifying reset token:", error);
+        return null;
+    }
+}
+
+  async  updatePassword(email, newPassword) {
+    try {
+      const user = await this.db.models.User.findOne({ where: { email } });
+      console.log("user => ",user)
+      if (!user) {
+        console.log("User not found");
+        return;
+      }
+      // Update user's password
+      // await user.update({ password: newPassword });
+      user.password = newPassword; 
+      console.log("checking passowrds," , user.password , newPassword)
+      await user.save();
+    } catch (error) {
+      console.error("Error updating password:", error);
+    }
+  }
+
+  async invalidateResetToken(email) {
+    try {
+      const user = await this.db.models.User.findOne({ where: { email } });
+      if (!user) {
+        console.log("User not found");
+        return;
+      }
+      // Invalidate/reset the reset token
+      await user.update({ resetToken: null });
+    } catch (error) {
+      console.error("Error invalidating reset token:", error);
+    }
+  }
+
   async createUser(userData) {
     const newUser = new this.db.models.User(userData);
     console.log("newuser", newUser)

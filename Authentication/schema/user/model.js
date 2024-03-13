@@ -15,6 +15,10 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.STRING,
       allowNull: true,
     },
+    resetToken: {
+      type: DataTypes.STRING,
+      allowNull: true,
+  },
     googleId: {
       type: DataTypes.STRING,
       allowNull: true,
@@ -34,6 +38,7 @@ module.exports = (sequelize, DataTypes) => {
  
   },{timestamps: false}
   );
+  // sequelize.sync();
 
 
   return User;
