@@ -1,6 +1,6 @@
 version: "3"
 services:
-  stripe_payment_service:
+  AunthenticationService:
     build: .
     platform: "linux/amd64"
     ports:
