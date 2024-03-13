@@ -19,16 +19,22 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.STRING,
       allowNull: true,
     },
+    facebookId: {
+      type: DataTypes.STRING,
+      allowNull: true,
+    },
+    githubId: {
+      type: DataTypes.STRING,
+      allowNull: true,
+    },
     picture: {
       type: DataTypes.STRING,
       allowNull: true,
     },
  
-  },
-
- {  timestamps: false}
+  },{timestamps: false}
   );
 
-  
+
   return User;
 };

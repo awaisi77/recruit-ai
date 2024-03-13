@@ -4,7 +4,6 @@ const { applyMiddleware } = require("graphql-middleware");
 const { buildSubgraphSchema } = require("@apollo/federation");
 const express = require("express");
 
-
 const app = express();
 
 const bodyParser = require("body-parser");
@@ -27,6 +26,8 @@ const api = require("./routes/api/index");
 
 require('./services/auth/passport')
 require('./services/auth/passportGoogleSSO')
+require('./services/auth/passportFacebook')
+require('./services/auth/passportGithub')
 
 //Body Parser Middleware - Should be defined before defining routes
 app.use(
