@@ -2,7 +2,7 @@
 
 class UserDL {
   constructor(db) {
-    this.db = db
+    this.db = db;
   }
 
   async alreadyExistingUser(email) {
@@ -81,6 +81,28 @@ class UserDL {
       console.log("Error: ", err);
       return { error: "Cannot register user at the moment!" };
     });
+  }
+
+  async getUserInfoById(userId) {
+    try {
+      console.log("id============>>>", userId)
+      // Query the database to get user information by ID
+      const userInfo = await this.db.models.User.findByPk(userId);
+      return userInfo;
+    } catch (error) {
+      console.error('Error fetching user information in data layer:', error);
+      throw error;
+    }
+  }
+
+  async getAllUsers() {
+    try {
+      const allUsers = await this.db.models.User.findAll();
+      return allUsers;
+    } catch (error) {
+      console.error("Error fetching all users in UserDL:", error);
+      throw error;
+    }
   }
 
 }

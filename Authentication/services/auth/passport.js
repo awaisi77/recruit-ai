@@ -5,6 +5,7 @@ const StrategyJwt = passportJwt.Strategy;
 const Datasources = require('../../datasources');
 const db = Datasources.getDatabase();
 
+
 passport.use(
   new StrategyJwt(
     {

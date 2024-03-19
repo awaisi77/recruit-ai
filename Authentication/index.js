@@ -15,14 +15,14 @@ const { responseHandler, errorHandler } = require("./helpers/response_handler");
 
 const port = process.env.port || 4008;
 
-const allianz_routes = require("./routes/api/allianz");
+// const allianz_routes = require("./routes/api/allianz");
 
 const passport = require("passport");
 const cookieSession = require("cookie-session");
 const session = require('express-session');
 
 
-const api = require("./routes/api/index");
+const api = require("./routes/index");
 
 require('./services/auth/passport')
 require('./services/auth/passportGoogleSSO')

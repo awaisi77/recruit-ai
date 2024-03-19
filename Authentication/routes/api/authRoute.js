@@ -24,7 +24,6 @@ router.post("/signup", async function (req, res, next) {
 })
 
 
-
 //auth logout
 router.get("/logout", function (req, res) {
     //handle with passport
