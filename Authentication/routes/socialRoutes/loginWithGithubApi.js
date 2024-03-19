@@ -8,7 +8,6 @@ const successLoginUrl = "http://localhost:4008/api/v1/login/success";
 const errorLoginUrl = "http://localhost:4008/login/error";
 
 
-
 // Auth with Facebook
 router.get("/login/github", passport.authenticate('github',  { scope: ['profile'] }));
 
@@ -20,11 +19,8 @@ router.get("/auth/github/redirect", passport.authenticate('github', {
 }), (req, res) => {
     console.log(req.user);
     res.send("Thank you for signing in");
-});
+});``
 
- router.get('/check', isUserAuthenticated, (req, res) => {
-    res.send("welcome authorized user!!!")
- })
 
  router.get('/login/success', isUserAuthenticated, (req, res) => {
     res.send("login successfull!!!")

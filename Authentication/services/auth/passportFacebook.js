@@ -4,7 +4,6 @@ const keys = require('../../config/keys')
 const Datasources = require('../../datasources');
 const db = Datasources.getDatabase();
 
-
 const callbackURL = 'http://localhost:4008/api/v1/auth/facebook/redirect'
 
 passport.use(new FacebookStrategy({
